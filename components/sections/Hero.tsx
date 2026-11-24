@@ -47,7 +47,7 @@ export default function Hero() {
 
         {/* Buttons */}
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a href="#contact" className={cn(buttonVariants(), "rounded-full")}>
+          <a href="#contact" className={cn(buttonVariants(), "rounded-full ")}>
             HIRE ME
           </a>
           <a
@@ -59,12 +59,13 @@ export default function Hero() {
         </div>
 
         {/* Tech stack */}
-        <ul className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+        
+      </div>
+      <ul className="absolute bottom-8 inset-x-0 z-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 text-sm text-muted-foreground">
           {stack.map((tech) => (
             <li key={tech}>{tech}</li>
           ))}
         </ul>
-      </div>
     </section>
   );
 }
