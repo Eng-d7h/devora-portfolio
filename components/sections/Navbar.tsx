@@ -14,16 +14,16 @@ const links = [
 ];
 
 const linkBase =
-  "rounded-full px-4 py-1.5 text-sm text-muted-foreground hover:bg-primary/5 hover:text-primary";
-const linkActive = "bg-primary/10 text-primary font-medium";
+  "rounded-full px-4 py-1.5 text-sm text-muted-foreground hover:bg-foreground/5 hover:text-foreground";
+const linkActive = "bg-foreground/10 text-foreground font-medium";
 
 export default function Navbar() {
   const [active, setActive] = useState("HOME");
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4">
-      <nav className="relative flex items-center gap-2 rounded-full border bg-card/80 backdrop-blur px-2 py-1.5 shadow-lg">
+    <header className="dark fixed top-4 inset-x-0 z-50 flex justify-center px-4">
+      <nav className="relative flex items-center gap-2 rounded-full border bg-card/80 backdrop-blur px-2 py-1.5 shadow-lg text-foreground">
         <Link href="/" className="px-3 font-bold text-primary">
           DEVORA
         </Link>
@@ -66,7 +66,7 @@ export default function Navbar() {
         <a
           href="/cv.pdf"
           download
-          className="hidden md:block rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-primary-foreground"
+          className="hidden md:block rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-background"
         >
           DOWNLOAD CV
         </a>
@@ -77,7 +77,7 @@ export default function Navbar() {
           className="md:hidden p-2 rounded-full hover:bg-primary/5"
           aria-label="Toggle menu"
         >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          {open ? <X className="size-5" /> : <Menu className="size-5 " />}
         </button>
 
         {/* Mobile: dropdown */}
@@ -99,7 +99,7 @@ export default function Navbar() {
             <a
               href="/cv.pdf"
               download
-              className="mt-1 rounded-full bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
+              className="text-background  mt-1 rounded-full bg-primary px-4 py-2 text-center text-sm font-medium "
             >
               DOWNLOAD CV
             </a>

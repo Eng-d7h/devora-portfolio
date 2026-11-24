@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --primary:#9024B6;
+  --primary:#FF5408;
   --muted:#F4F4F7;
   --background:#FFFFFF;
   --foreground:#111827;
@@ -13,7 +13,7 @@
   --card-foreground:#111827;
   --popover:oklch(1 0 0);
   --popover-foreground:oklch(0.145 0 0);
-  --primary-foreground:#FFFFFF;
+  --primary-foreground:#0B0B12;
   --secondary:oklch(0.97 0 0);
   --secondary-foreground:oklch(0.205 0 0);
   --muted-foreground:#6B7280;
@@ -22,7 +22,7 @@
   --destructive:oklch(0.577 0.245 27.325);
   --border:oklch(0.922 0 0);
   --input:oklch(0.922 0 0);
-  --ring:#4F46E5;
+  --ring:#FF5408;
   --chart-1:oklch(0.87 0 0);
   --chart-2:oklch(0.556 0 0);
   --chart-3:oklch(0.439 0 0);
@@ -131,8 +131,8 @@
   --card-foreground:oklch(0.985 0 0);
   --popover:oklch(0.205 0 0);
   --popover-foreground:oklch(0.985 0 0);
-  --primary:#9024B6;
-  --primary-foreground:#FFFFFF;
+  --primary:#FF5408;
+  --primary-foreground:#0B0B12;
   --secondary:oklch(0.269 0 0);
   --secondary-foreground:oklch(0.985 0 0);
   --muted:#16161f;
@@ -142,7 +142,7 @@
   --destructive:oklch(0.704 0.191 22.216);
   --border:oklch(1 0 0 / 10%);
   --input:oklch(1 0 0 / 15%);
-  --ring:oklch(0.556 0 0);
+  --ring:#FF5408;
   --chart-1:oklch(0.87 0 0);
   --chart-2:oklch(0.556 0 0);
   --chart-3:oklch(0.439 0 0);
