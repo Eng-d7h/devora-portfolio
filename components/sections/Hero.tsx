@@ -1,7 +1,4 @@
-import Image from "next/image";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import heroBg from "@/public/hero-bg.webp";
+import { ArrowRight } from "lucide-react";
 
 const stack = ["Next.js", "React", "TypeScript", "Tailwind CSS", "Figma"];
 
@@ -9,63 +6,64 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4 text-center text-foreground"
+      className="relative overflow-hidden bg-background text-foreground px-4 pt-36 py-6 md:py-28 "
     >
-      {/* Layer 1: background image */}
-      <Image
-        src={heroBg}
-        alt=""
-        fill
-        priority
-        placeholder="blur"
-        sizes="100vw"
-        className="object-cover"
-      />
+      <div aria-hidden="true" className="bg-grid absolute inset-0" />
 
-      {/* Layer 2: overlay + bottom fade */}
       <div className="absolute inset-0 bg-background/50" />
       <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-background to-transparent" />
 
-      {/* Layer 3: content */}
-      <div className="relative z-10 mx-auto max-w-3xl pt-32 pb-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        {/* Status pill */}
-        <p className="inline-flex items-center gap-2 rounded-full border bg-card/50 px-4 py-1 text-sm text-muted-foreground backdrop-blur">
-          <span className="size-2 rounded-full bg-primary animate-pulse" />
-          Available for agency projects
-        </p>
+      <div className="relative z-10 mx-auto max-w-5xl">
+        <div className="grid items-center gap-16 md:grid-cols-2">
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <p className="inline-flex rounded-full border bg-card px-4 py-1.5 text-xs font-semibold shadow-sm">
+              For Design Agencies
+            </p>
 
-        {/* Headline */}
-        <h1 className="mt-6 text-5xl md:text-7xl font-bold tracking-tight">
-  <span className="text-primary">Front-end</span> Developer
-</h1>
+            <h1 className="mt-6 text-5xl md:text-7xl font-semibold leading-[0.95] tracking-tighter">
+              <span className="text-primary">Front-end</span>
+              <br />
+              Developer.
+            </h1>
 
-        {/* Subtext */}
-        <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
-  I&apos;m Abdelrahman. I turn agency Figma designs into fast,
-  pixel-perfect Next.js websites, delivered under your brand.
-</p>
+            <p className="mt-8 max-w-xs text-base md:text-lg leading-relaxed text-foreground/80">
+              I turn your Figma designs into fast, pixel-perfect Next.js
+              websites, delivered under your brand.
+            </p>
 
-        {/* Buttons */}
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a href="#contact" className={cn(buttonVariants(), "rounded-full ")}>
-            HIRE ME
-          </a>
-          <a
-            href="#portfolio"
-            className={cn(buttonVariants({ variant: "outline" }), "rounded-full backdrop-blur")}
-          >
-            VIEW MY WORK
-          </a>
+            <a
+              href="#contact"
+              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-primary py-1 pl-1 pr-5 text-sm font-medium text-primary-foreground shadow-xl transition hover:bg-primary/90"
+            >
+              <span className="grid size-9 place-items-center rounded-full bg-primary-foreground text-primary">
+                <ArrowRight className="size-4 transition group-hover:translate-x-0.5" />
+              </span>
+              Book a call with me
+            </a>
+          </div>
+
+          <div
+  id="hero-stack-anchor"
+  aria-hidden="true"
+  className="relative hidden aspect-[4/3] w-full md:block"
+>
+  <div className="absolute left-1/2 top-1/2 aspect-square w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-[100px]" />
+  <div className="absolute left-1/2 top-1/2 aspect-square w-[95%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/20" />
+  <div className="absolute left-1/2 top-1/2 aspect-square w-[65%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/10" />
+</div>
         </div>
 
-        {/* Tech stack */}
-        
+        <div className="mt-16 flex flex-col items-center gap-3 border-y py-6 text-center md:mt-24 md:flex-row md:justify-between md:py-10 md:text-left">
+  <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+    Built with
+  </p>
+  <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm md:justify-end md:gap-x-8">
+    {stack.map((tech) => (
+      <li key={tech}>{tech}</li>
+    ))}
+  </ul>
+</div>
       </div>
-      <ul className="absolute bottom-8 inset-x-0 z-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 text-sm text-muted-foreground">
-          {stack.map((tech) => (
-            <li key={tech}>{tech}</li>
-          ))}
-        </ul>
     </section>
   );
 }
