@@ -22,7 +22,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="dark fixed top-4 inset-x-0 z-50 flex justify-center px-4">
+    <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4">
       <nav className="relative flex items-center gap-2 rounded-full border bg-card/80 backdrop-blur px-2 py-1.5 shadow-lg text-foreground">
         <Link href="/" className="px-3 font-bold text-primary">
           DEVORA

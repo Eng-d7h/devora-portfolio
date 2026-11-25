@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="dark relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4 text-center text-foreground"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4 text-center text-foreground"
     >
       {/* Layer 1: background image */}
       <Image
