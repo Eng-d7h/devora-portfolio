@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Reveal from "../ui/Reveal";
 
 export default function CtaBanner() {
   return (
     <section className="mx-auto max-w-5xl px-4 py-16 md:py-24">
+      <Reveal>
       <div className="relative overflow-hidden rounded-3xl bg-primary px-6 py-16 text-center text-background md:py-24">
         <div
           aria-hidden="true"
@@ -31,6 +33,7 @@ export default function CtaBanner() {
           </a>
         </div>
       </div>
+      </Reveal>
     </section>
   );
 }

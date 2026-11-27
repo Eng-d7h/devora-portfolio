@@ -1,5 +1,6 @@
 import { Timer, ShieldCheck, RefreshCw } from "lucide-react";
 import GuaranteeCard from "../ui/GuaranteeCard";
+import Reveal from "../ui/Reveal";
 
 const guarantees = [
   {
@@ -28,23 +29,24 @@ const guarantees = [
 export default function Guarantees() {
   return (
     <section id="guarantees" className="mx-auto max-w-5xl px-4 py-16 md:py-28">
-      <div className="mx-auto max-w-xl text-center">
+      <Reveal className="mx-auto max-w-xl text-center">
         <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter">Our Guarantees</h2>
         <p className="mt-6 text-muted-foreground">
           Clear process, no surprises. Here&apos;s what every agency project includes.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mt-16 grid items-center gap-6 md:grid-cols-3">
-        {guarantees.map((item) => (
-          <GuaranteeCard
-            key={item.id}
-            icon={item.icon}
-            title={item.title}
-            description={item.description}
-            featured={item.featured}
-          />
-        ))}
+        {guarantees.map((item, index) => (
+  <Reveal key={item.id} delay={index * 0.12}>
+    <GuaranteeCard
+      icon={item.icon}
+      title={item.title}
+      description={item.description}
+      featured={item.featured}
+    />
+  </Reveal>
+))}
       </div>
     </section>
   );

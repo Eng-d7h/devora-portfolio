@@ -1,6 +1,7 @@
 import { ArrowRight, PenTool, LayoutTemplate, Wrench, Gauge } from "lucide-react";
 import { SiNextdotjs, SiReact, SiTypescript, SiTailwindcss, SiFigma, SiGithub } from "react-icons/si";
 import ServiceCard from "../ui/ServiceCard";
+import Reveal from "../ui/Reveal";
 
 const services = [
   { id: 1, icon: PenTool, title: "Figma to Next.js", description: "Your designs, built pixel-perfect in Next.js, TypeScript and Tailwind." },
@@ -23,17 +24,22 @@ export default function Services() {
     <section id="service" className="mx-auto max-w-5xl px-4 py-16 md:py-28">
       <div className="grid gap-12  md:grid-cols-2 md:items-center">
         <div>
+          <Reveal>
           <h2 className="text-4xl md:text-6xl font-semibold leading-[0.95] tracking-tighter">
             Frontend your agency can rely on.
           </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
           <p className="mt-6 max-w-sm text-muted-foreground">
             You design and own the client. I build it, test it and hand it back under your brand.
           </p>
+          </Reveal>
           <div className="mt-10">
   <p className="text-sm font-medium -mt-4 mb-2">My tech stack</p>
   <ul className="mt-4 flex flex-wrap gap-3">
-    {stack.map(({ name, icon: Icon }) => (
+    {stack.map(({ name, icon: Icon }, index) => (
       <li key={name}>
+        <Reveal as="li" key={name} delay={index * 0.06}>
         <div
           title={name}
           className="grid size-14 place-items-center rounded-2xl border bg-card shadow-lg transition hover:-translate-y-1 hover:border-primary/50 hover:text-primary"
@@ -41,6 +47,7 @@ export default function Services() {
           <Icon className="size-6" aria-hidden="true" />
           <span className="sr-only">{name}</span>
         </div>
+        </Reveal>
       </li>
     ))}
   </ul>
@@ -48,8 +55,9 @@ export default function Services() {
         </div>
 
         <ul className="flex flex-col gap-10">
-          {services.map((service) => (
+          {services.map((service , index) => (
             <ServiceCard
+              index={index} 
               key={service.id}
               title={service.title}
               icon={service.icon}

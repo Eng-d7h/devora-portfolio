@@ -1,5 +1,6 @@
 import { Mail, Clock, MapPin } from "lucide-react";
 import ContactForm from "../ui/ContactForm";
+import Reveal from "../ui/Reveal";
 
 const details = [
   { id: 1, icon: Mail, label: "Email", value: "hello@yourdomain.com", href: "mailto:hello@yourdomain.com" },
@@ -12,13 +13,15 @@ export default function Contact() {
     <section id="contact" className="mx-auto max-w-5xl px-4 py-16 md:py-28">
       <div className="grid gap-12 md:grid-cols-2">
         <div>
+          <Reveal>
           <h2 className="text-4xl md:text-6xl font-semibold leading-[0.95] tracking-tighter">
             Let&apos;s work together.
           </h2>
           <p className="mt-6 max-w-sm text-muted-foreground">
             Send me your Figma file or a short brief. I&apos;ll reply with a timeline and a quote.
           </p>
-
+          </Reveal>
+          
           <ul className="mt-10 flex flex-col gap-6">
             {details.map((item) => {
               const Icon = item.icon;
@@ -42,8 +45,9 @@ export default function Contact() {
             })}
           </ul>
         </div>
-
+            <Reveal delay={0.15}>
         <ContactForm />
+        </Reveal>
       </div>
     </section>
   );

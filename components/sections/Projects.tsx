@@ -11,6 +11,7 @@ import {
   type MotionValue,
 } from "motion/react";
 import ProjectCard from "../ui/ProjectCard";
+import Reveal from "../ui/Reveal";
 
 const projects = [
   {
@@ -170,9 +171,9 @@ export default function Projects() {
     aria-hidden="true"
     className="absolute left-1/2 top-1/2 aspect-square w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]"
   />
-
+  <Reveal>
   <h2 className="relative text-4xl md:text-6xl font-semibold tracking-tighter">Latest Projects</h2>
-
+    </Reveal>
       <div ref={gridRef} className="relative mt-12 grid gap-x-6 gap-y-12 md:grid-cols-2">
         {projects.map((project, index) => (
           <StackedCard
