@@ -28,7 +28,7 @@ const guarantees = [
 
 export default function Guarantees() {
   return (
-    <section id="guarantees" className="mx-auto max-w-5xl px-4 py-16 md:py-28">
+    <section id="guarantees" className="mx-auto max-w-5xl px-6 py-16 md:py-28">
       <Reveal className="mx-auto max-w-xl text-center">
         <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter">Our Guarantees</h2>
         <p className="mt-6 text-muted-foreground">

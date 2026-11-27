@@ -1,18 +1,19 @@
 import { ArrowUp } from "lucide-react";
 import { links } from "@/data/navigation";
+import CurrentYear from "../ui/CurrentYear";
 
 const socials = [
   { label: "GitHub", href: "https://github.com/Eng-d7h" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/your-profile" },
-  { label: "Email", href: "mailto:hello@yourdomain.com" },
+  { label: "Instagram", href: "https://www.instagram.com/devora0d/" },
+  { label: "Email", href: "devoora999@gmail.com" },
 ];
 
 export default function Footer() {
-  const year = new Date().getFullYear();
+  
 
   return (
     <footer>
-      <div className="mx-auto max-w-5xl px-4 py-12">
+      <div className="mx-auto max-w-5xl px-6 py-12">
         <div className="grid gap-10 md:grid-cols-[2fr_1fr_1fr]">
           <div>
             <a href="#home" className="text-lg font-bold text-primary">
@@ -60,7 +61,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t pt-6 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
-          <p>© {year} DEVORA. All rights reserved.</p>
+          <p>© <CurrentYear/> DEVORA. All rights reserved.</p>
           <a href="#home" className="inline-flex items-center gap-1 transition hover:text-primary">
             Back to top
             <ArrowUp className="size-4" />

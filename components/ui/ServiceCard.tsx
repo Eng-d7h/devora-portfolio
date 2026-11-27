@@ -13,7 +13,7 @@ export default function ServiceCard({ title, icon, description , index}: Service
 
   return (
     
-    <li className="group flex items-start gap-5">
+   
       <Reveal as="li" delay={index * 0.1} className="group flex items-start gap-5">
       <div className="grid size-14 shrink-0 place-items-center rounded-full border bg-card text-primary shadow-lg shadow-primary/10 transition group-hover:bg-primary group-hover:text-primary-foreground">
         <Icon className="size-6" />
@@ -23,7 +23,7 @@ export default function ServiceCard({ title, icon, description , index}: Service
         <p className="mt-1 text-sm text-muted-foreground">{description}</p>
       </div>
       </Reveal>
-    </li>
+    
     
   );
 }

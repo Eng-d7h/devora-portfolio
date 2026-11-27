@@ -3,14 +3,14 @@ import ContactForm from "../ui/ContactForm";
 import Reveal from "../ui/Reveal";
 
 const details = [
-  { id: 1, icon: Mail, label: "Email", value: "hello@yourdomain.com", href: "mailto:hello@yourdomain.com" },
+  { id: 1, icon: Mail, label: "Email", value: "DEVOORA999@gmail.com", href: "mailto:devoora999@gmail.com" },
   { id: 2, icon: Clock, label: "Response time", value: "Within 24 hours", href: "" },
   { id: 3, icon: MapPin, label: "Based in", value: "Türkiye · overlaps US mornings", href: "" },
 ];
 
 export default function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-5xl px-4 py-16 md:py-28">
+    <section id="contact" className="mx-auto max-w-5xl px-6 py-16 md:py-28">
       <div className="grid gap-12 md:grid-cols-2">
         <div>
           <Reveal>

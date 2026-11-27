@@ -1,81 +1,148 @@
 "use client";
-import { useState } from "react";
+
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { links } from "@/data/navigation";
 
-
 const linkBase =
-  "rounded-full px-4 py-1.5 text-sm text-muted-foreground hover:bg-foreground/5 hover:text-foreground";
-const linkActive = "bg-foreground/10 text-foreground font-medium";
+  "relative z-10 rounded-full px-4 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground";
+const linkActive = "text-foreground font-medium";
+
+type PillLinksProps = {
+  items: typeof links;
+  active: string;
+  onSelect: (label: string) => void;
+  short?: boolean;
+  className?: string;
+};
+
+function PillLinks({ items, active, onSelect, short = false, className }: PillLinksProps) {
+  const refs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const [pill, setPill] = useState({ left: 0, width: 0 });
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+  const update = () => {
+    const el = refs.current[active];
+    if (el && el.offsetWidth > 0) {
+      setPill({ left: el.offsetLeft, width: el.offsetWidth });
+    } else {
+      setPill((prev) => ({ ...prev, width: 0 }));
+    }
+  };
+
+  update();
+  document.fonts.ready.then(() => {
+    update();
+    setReady(true);
+  });
+  window.addEventListener("resize", update);
+  return () => window.removeEventListener("resize", update);
+}, [active]);
+
+  return (
+    <div className={cn("relative items-center gap-1", className)}>
+      <span
+        aria-hidden="true"
+        className={cn(
+          "absolute top-0 bottom-0 left-0 rounded-full bg-foreground/10",
+          ready && "transition-all duration-300 ease-out"
+        )}
+        style={{
+          transform: `translateX(${pill.left}px)`,
+          width: pill.width,
+          opacity: pill.width ? 1 : 0,
+        }}
+      />
+      {items.map((link) => (
+        <Link
+          key={link.key}
+          href={link.href}
+          ref={(el) => {
+            refs.current[link.label] = el;
+          }}
+          onClick={() => onSelect(link.label)}
+          className={cn(linkBase, short && "px-3", link.label === active && linkActive)}
+        >
+          {short ? link.short : link.label}
+        </Link>
+      ))}
+    </div>
+  );
+}
 
 export default function Navbar() {
   const [active, setActive] = useState("HOME");
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+  const update = () => {
+    const middle = window.innerHeight / 2;
+    let current = links[0].label;
+    let closestTop = -Infinity;
+
+    links.forEach((link) => {
+      const section = document.querySelector(link.href);
+      if (!section) return;
+      const top = section.getBoundingClientRect().top;
+      if (top <= middle && top > closestTop) {
+        closestTop = top;
+        current = link.label;
+      }
+    });
+
+    setActive(current);
+  };
+
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  return () => {
+    window.removeEventListener("scroll", update);
+    window.removeEventListener("resize", update);
+  };
+}, []);
   return (
     <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4">
-      <nav className="relative flex items-center gap-2 rounded-full border bg-card/80 backdrop-blur px-2 py-1.5 shadow-lg text-foreground">
-        <Link href="/" className="px-3 font-bold text-primary">
+      <nav className="relative flex items-center gap-2 rounded-full border bg-card/80 px-2 py-1.5 text-foreground shadow-lg backdrop-blur">
+        <Link href="#home" className="px-3 font-bold text-primary">
           DEVORA
         </Link>
 
-        <div className="bg-border h-5 w-px" />
+        <div className="h-5 w-px bg-border" />
 
-        {/* Desktop: all links */}
-        <div className="hidden md:flex items-center gap-1">
-          {links.map((link) => (
-            <Link
-              key={link.key}
-              href={link.href}
-              onClick={() => setActive(link.label)}
-              className={cn(linkBase, link.label === active && linkActive)}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
+        <PillLinks items={links} active={active} onSelect={setActive} className="hidden md:flex" />
 
-        {/* Mobile: shortcuts only */}
-        <div className="flex md:hidden items-center gap-1">
-          {links
-            .filter((link) => link.mobile)
-            .map((link) => (
-              <Link
-                key={link.key}
-                href={link.href}
-                onClick={() => setActive(link.label)}
-                className={cn(linkBase, "px-3", link.label === active && linkActive)}
-              >
-                {link.short}
-              </Link>
-            ))}
-        </div>
+        <PillLinks
+          items={links.filter((link) => link.mobile)}
+          active={active}
+          onSelect={setActive}
+          short
+          className="flex md:hidden"
+        />
 
-        <div className="bg-border h-5 w-px" />
+        <div className="h-5 w-px bg-border" />
 
-        {/* Desktop: CV button */}
         <a
           href="/cv.pdf"
           download
-          className="hidden md:block rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-background"
+          className="hidden rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground md:block"
         >
           DOWNLOAD CV
         </a>
 
-        {/* Mobile: menu button */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden p-2 rounded-full hover:bg-primary/5"
+          className="rounded-full p-2 hover:bg-foreground/5 md:hidden"
           aria-label="Toggle menu"
         >
-          {open ? <X className="size-5" /> : <Menu className="size-5 " />}
+          {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
 
-        {/* Mobile: dropdown */}
         {open && (
-          <div className="absolute top-full mt-2 inset-x-0 flex flex-col gap-1 rounded-2xl border bg-card p-2 shadow-lg md:hidden">
+          <div className="absolute inset-x-0 top-full mt-2 flex flex-col gap-1 rounded-2xl border bg-card p-2 shadow-lg md:hidden">
             {links.map((link) => (
               <Link
                 key={link.key}
@@ -84,7 +151,10 @@ export default function Navbar() {
                   setActive(link.label);
                   setOpen(false);
                 }}
-                className={cn(linkBase, link.label === active && linkActive)}
+                className={cn(
+                  linkBase,
+                  link.label === active && "bg-foreground/10 text-foreground font-medium"
+                )}
               >
                 {link.label}
               </Link>
@@ -92,7 +162,7 @@ export default function Navbar() {
             <a
               href="/cv.pdf"
               download
-              className="text-background  mt-1 rounded-full bg-primary px-4 py-2 text-center text-sm font-medium "
+              className="mt-1 rounded-full bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
             >
               DOWNLOAD CV
             </a>

@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-background text-foreground px-4 pt-36 py-6 md:py-28 "
+      className="relative overflow-hidden bg-background text-foreground px-6 pt-36 py-6 md:py-28 "
     >
       <div aria-hidden="true" className="bg-grid absolute inset-0" />
 

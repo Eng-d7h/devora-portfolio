@@ -21,7 +21,7 @@ const stack = [
 
 export default function Services() {
   return (
-    <section id="service" className="mx-auto max-w-5xl px-4 py-16 md:py-28">
+    <section id="service" className="mx-auto max-w-5xl px-6 py-16 md:py-28">
       <div className="grid gap-12  md:grid-cols-2 md:items-center">
         <div>
           <Reveal>
@@ -38,7 +38,7 @@ export default function Services() {
   <p className="text-sm font-medium -mt-4 mb-2">My tech stack</p>
   <ul className="mt-4 flex flex-wrap gap-3">
     {stack.map(({ name, icon: Icon }, index) => (
-      <li key={name}>
+      
         <Reveal as="li" key={name} delay={index * 0.06}>
         <div
           title={name}
@@ -48,7 +48,7 @@ export default function Services() {
           <span className="sr-only">{name}</span>
         </div>
         </Reveal>
-      </li>
+      
     ))}
   </ul>
 </div>

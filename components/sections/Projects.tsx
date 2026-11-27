@@ -166,7 +166,7 @@ export default function Projects() {
   const animate = isDesktop && !reduceMotion;
 
   return (
-    <section id="portfolio" className="relative mx-auto max-w-5xl overflow-x-clip px-4 py-20 md:py-28">
+    <section id="portfolio" className="relative mx-auto max-w-5xl overflow-x-clip px-6 py-20 md:py-28">
   <div
     aria-hidden="true"
     className="absolute left-1/2 top-1/2 aspect-square w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]"

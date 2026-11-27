@@ -3,7 +3,7 @@ import Reveal from "../ui/Reveal";
 
 export default function BrandBanner() {
   return (
-    <section aria-label="DEVORA" className="mx-auto max-w-5xl px-4 pt-16 pb-30 md:pt-24">
+    <section aria-label="DEVORA" className="mx-auto max-w-5xl px-6 pt-16 pb-30 md:pt-24">
       <Reveal>
       <p className="text-center text-xs font-medium uppercase tracking-[0.5em] text-primary md:text-sm">
         White-Label Frontend

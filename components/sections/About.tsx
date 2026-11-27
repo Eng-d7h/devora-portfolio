@@ -19,7 +19,7 @@ const steps = [
 
 export default function About() {
   return (
-    <section id="about" className="mx-auto max-w-5xl px-4 py-16 md:py-28">
+    <section id="about" className="mx-auto max-w-5xl px-6 py-16 md:py-28">
       <div className="grid gap-16 md:grid-cols-2">
         <div>
           <Reveal>
