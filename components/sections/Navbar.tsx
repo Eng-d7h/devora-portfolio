@@ -3,15 +3,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import { links } from "@/data/navigation";
 
-const links = [
-  { key: 1, label: "HOME", short: "Home", href: "#home", mobile: false },
-  { key: 2, label: "ABOUT ME", short: "About", href: "#about", mobile: false },
-  { key: 3, label: "MY SERVICE", short: "Services", href: "#service", mobile: true },
-  { key: 4, label: "PORTFOLIO", short: "Work", href: "#portfolio", mobile: false },
-  { key: 5, label: "TESTIMONIALS", short: "Reviews", href: "#testimonials", mobile: false },
-  { key: 6, label: "CONTACT", short: "Contact", href: "#contact", mobile: true },
-];
 
 const linkBase =
   "rounded-full px-4 py-1.5 text-sm text-muted-foreground hover:bg-foreground/5 hover:text-foreground";

@@ -2,6 +2,7 @@ import About from "@/components/sections/About";
 import BrandBanner from "@/components/sections/BrandBanner";
 import Contact from "@/components/sections/Contact";
 import CtaBanner from "@/components/sections/CtaBanner";
+import Footer from "@/components/sections/Footer";
 import Guarantees from "@/components/sections/Guarantees";
 import Hero from "@/components/sections/Hero";
 import Projects from "@/components/sections/Projects";
@@ -15,18 +16,19 @@ export default function page() {
       <Divider/>
       <Projects />
       <Divider/>
-      <Services />
-      <Divider/>
-      <About/>
+      <About />
       <Divider/>
       <CtaBanner/>
       <Divider/>
-      <Guarantees/>
+      <Services/>
       <Divider/>
       <BrandBanner/>
       <Divider/>
+      <Guarantees/>
+      <Divider/>
       <Contact/>
       <Divider/>
+      
 
     </div>
   )
