@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight , Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { links } from "@/data/navigation";
 
@@ -116,7 +116,7 @@ export default function Navbar() {
         <PillLinks items={links} active={active} onSelect={setActive} className="hidden md:flex" />
 
         <PillLinks
-          items={links.filter((link) => link.mobile)}
+          items={links.filter((link) => link.href !== "#contact")}
           active={active}
           onSelect={setActive}
           short
@@ -125,13 +125,14 @@ export default function Navbar() {
 
         <div className="h-5 w-px bg-border" />
 
-        <a
-          href="/cv.pdf"
-          download
-          className="hidden rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground md:block"
-        >
-          DOWNLOAD CV
-        </a>
+        <Link
+  href="#contact"
+  onClick={() => setActive("CONTACT")}
+  className="hidden items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:bg-primary/90 md:inline-flex"
+>
+  Contact
+  <ArrowUpRight className="size-4" />
+</Link>
 
         <button
           onClick={() => setOpen(!open)}
@@ -159,13 +160,14 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <a
-              href="/cv.pdf"
-              download
-              className="mt-1 rounded-full bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
-            >
-              DOWNLOAD CV
-            </a>
+            <Link
+  href="#contact"
+  onClick={() => setActive("CONTACT")}
+  className="hidden items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:bg-primary/90 md:inline-flex"
+>
+  Contact
+  <ArrowUpRight className="size-4" />
+</Link>
           </div>
         )}
       </nav>

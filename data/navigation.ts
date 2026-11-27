@@ -4,5 +4,4 @@ export const links = [
   { key: 3, label: "ABOUT", short: "About", href: "#about", mobile: false },
   { key: 4, label: "SERVICES", short: "Services", href: "#service", mobile: true },
   { key: 5, label: "GUARANTEES", short: "Guarantees", href: "#guarantees", mobile: false },
-  { key: 6, label: "CONTACT", short: "Contact", href: "#contact", mobile: true },
 ];
