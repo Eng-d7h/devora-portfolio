@@ -113,15 +113,22 @@ export default function Navbar() {
 
         <div className="h-5 w-px bg-border" />
 
-        <PillLinks items={links} active={active} onSelect={setActive} className="hidden md:flex" />
+       {/* Desktop: all links except Contact */}
+<PillLinks
+  items={links.filter((link) => link.href !== "#contact")}
+  active={active}
+  onSelect={setActive}
+  className="hidden md:flex"
+/>
 
-        <PillLinks
-          items={links.filter((link) => link.href !== "#contact")}
-          active={active}
-          onSelect={setActive}
-          short
-          className="flex md:hidden"
-        />
+{/* Mobile: shortcuts only */}
+<PillLinks
+  items={links.filter((link) => link.mobile)}
+  active={active}
+  onSelect={setActive}
+  short
+  className="flex md:hidden"
+/>
 
         <div className="h-5 w-px bg-border" />
 
