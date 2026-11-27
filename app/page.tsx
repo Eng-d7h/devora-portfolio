@@ -1,3 +1,4 @@
+import About from "@/components/sections/About";
 import BrandBanner from "@/components/sections/BrandBanner";
 import Contact from "@/components/sections/Contact";
 import CtaBanner from "@/components/sections/CtaBanner";
@@ -15,6 +16,8 @@ export default function page() {
       <Projects />
       <Divider/>
       <Services />
+      <Divider/>
+      <About/>
       <Divider/>
       <CtaBanner/>
       <Divider/>
