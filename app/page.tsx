@@ -1,3 +1,5 @@
+import BrandBanner from "@/components/sections/BrandBanner";
+import Contact from "@/components/sections/Contact";
 import CtaBanner from "@/components/sections/CtaBanner";
 import Guarantees from "@/components/sections/Guarantees";
 import Hero from "@/components/sections/Hero";
@@ -18,6 +20,11 @@ export default function page() {
       <Divider/>
       <Guarantees/>
       <Divider/>
+      <BrandBanner/>
+      <Divider/>
+      <Contact/>
+      <Divider/>
+
     </div>
   )
 }
